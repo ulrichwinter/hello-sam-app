@@ -1,0 +1,23 @@
+version=0.1
+
+[default]
+[default.global.parameters]
+
+[default.deploy]
+[default.deploy.parameters]
+stack_name="hello-sam-app"
+s3_bucket="aws-sam-cli-managed-default-samclisourcebucket-o68ba9kfy40w"
+s3_prefix="hello-sam-app"
+region="eu-central-1"
+capabilities="CAPABILITY_IAM"
+image_repositories=[]
+parameter_overrides="Environment=\"prod\" BucketName=\"prodbucket\""
+
+[dev.deploy]
+[dev.deploy.parameters]
+parameter_overrides="Environment=\"dev\" "
+
+[prod.deploy]
+[prod.deploy.parameters]
+parameter_overrides="Environment=\"prod\" BucketName=\"prodbucket\""
+
