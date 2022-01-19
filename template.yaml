@@ -15,7 +15,7 @@ Parameters:
     Type: String
     AllowedValues:
       - prod
-      - test
+      - dev
   BucketName:
     Type: String
     Default: mybucket
