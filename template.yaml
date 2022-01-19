@@ -11,7 +11,6 @@ Globals:
 Parameters:
   Environment:
     Description: Environment type.
-    Default: test
     Type: String
     AllowedValues:
       - prod
