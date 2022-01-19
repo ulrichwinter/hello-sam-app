@@ -48,7 +48,7 @@ Resources:
   S3Bucket:
     Type: 'AWS::S3::Bucket'
     Condition: CreateProdResources
-    DeletionPolicy: Retain
+    DeletionPolicy: Delete
     Properties:
       BucketName:
         Ref: BucketName
