@@ -3,6 +3,12 @@ version=0.1
 [default]
 [default.global.parameters]
 
+# It *should* be possible, to specify common parameters for different environments only once:
+# see section "Precedence" here:
+#   https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-config.html
+# But this feature is as of Jan 2022 sam_cli version 1.37.0 not implemented:
+#  https://github.com/aws/aws-sam-cli/issues/2258
+
 [default.deploy]
 [default.deploy.parameters]
 stack_name="hello-sam-app"
@@ -11,13 +17,28 @@ s3_prefix="hello-sam-app"
 region="eu-central-1"
 capabilities="CAPABILITY_IAM"
 image_repositories=[]
-parameter_overrides="Environment=\"prod\" BucketName=\"prodbucket\""
+parameter_overrides=""
 
 [dev.deploy]
 [dev.deploy.parameters]
-parameter_overrides="Environment=\"dev\" "
+parameter_overrides="Environment=\"dev\""
+s3_prefix="hello-sam-app-dev"
+stack_name="hello-sam-app-dev"
+# duplicated common params:
+s3_bucket="aws-sam-cli-managed-default-samclisourcebucket-o68ba9kfy40w"
+region="eu-central-1"
+capabilities="CAPABILITY_IAM"
+image_repositories=[]
+
 
 [prod.deploy]
 [prod.deploy.parameters]
-parameter_overrides="Environment=\"prod\" BucketName=\"prodbucket\""
+parameter_overrides="Environment=\"prod\" BucketName=\"prodbucket-193847563\""
+stack_name="hello-sam-app-prod"
+s3_prefix="hello-sam-app-prod"
+# duplicated common params:
+s3_bucket="aws-sam-cli-managed-default-samclisourcebucket-o68ba9kfy40w"
+region="eu-central-1"
+capabilities="CAPABILITY_IAM"
+image_repositories=[]
 
